@@ -1,0 +1,34 @@
+sequenceDiagram
+    autonumber
+    participant Client
+    participant Server
+
+    Note over Client,Server: Phase 1: Negotiation
+    Client->>Server: Client Hello (Supported Ciphers, Client Random)
+    Server->>Client: Server Hello (Chosen Cipher, Server Random)
+    
+    Note over Client,Server: Phase 2: Authentication
+    Server->>Client: Certificate (Server's Public Key + CA Signature)
+    Server->>Client: Server Hello Done
+    
+    Note over Client: Client verifies CA Signature
+    
+    Note over Client,Server: Phase 3: Key Exchange
+    Note over Client: Client generates Pre-Master Secret
+    Note over Client: Encrypts Secret with Server's Public Key
+    Client->>Server: Client Key Exchange (Encrypted Pre-Master Secret)
+    
+    Note over Server: Server decrypts Secret with its Private Key
+    
+    Note over Client,Server: Both independently calculate Symmetric Session Key
+    
+    Note over Client,Server: Phase 4: Secure Tunnel Established
+    Client->>Server: Change Cipher Spec (Ready to encrypt)
+    Client->>Server: Finished (Encrypted handshake verification)
+    Server->>Client: Change Cipher Spec (Ready to encrypt)
+    Server->>Client: Finished (Encrypted handshake verification)
+    
+    Note over Client,Server: Application Data flows using Symmetric Session Key
+    rect rgb(200, 255, 200)
+    Client<<-->>Server: Encrypted HTTP Traffic
+    end
