@@ -13,9 +13,6 @@ This phase relies on Asymmetric Cryptography (Public Key Infrastructure). You wi
 ### Step 1: Generate a Private Key
 The private key is the mathematical core of the user's identity. It must be kept strictly confidential. 
 
-```text
-File generated successfully at /mnt/data/k8s-user-provisioning-rbac-guide.md
-
 ```bash
 openssl genrsa -out johndoe.key 2048
 
