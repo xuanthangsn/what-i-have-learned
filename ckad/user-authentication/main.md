@@ -1,6 +1,3 @@
-```python
-markdown_content = """# Kubernetes User Management & Role-Based Access Control (RBAC) Guide
-
 ## Overview
 
 A common misconception for Kubernetes newcomers is that the cluster natively manages "User" objects (e.g., `kubectl create user`). In reality, **Kubernetes does not have native User objects**. Instead, it relies on external identity providers (like OIDC, Active Directory, cloud IAM) or **X.509 Client Certificates** for authentication. 
@@ -15,8 +12,6 @@ This phase relies on Asymmetric Cryptography (Public Key Infrastructure). You wi
 
 ### Step 1: Generate a Private Key
 The private key is the mathematical core of the user's identity. It must be kept strictly confidential. 
-
-```
 
 ```text
 File generated successfully at /mnt/data/k8s-user-provisioning-rbac-guide.md
